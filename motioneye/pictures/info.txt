@@ -1,0 +1,2 @@
+This folder is the destination folder for static and video shootings.
+Please remember to activate them in the MotionEye dashboard (port :8765)
