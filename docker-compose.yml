@@ -1,0 +1,46 @@
+version: '3.7'
+services:
+
+  mqtt-sensors:
+    image: mistercaste/mqtt-sensors-dockerized:1.0.1
+    container_name: mqtt-dockerized
+    network_mode: host
+    privileged: true
+    restart: always
+    environment:
+      - SENSOR_PIN=14
+      - SENSOR_TYPE=dht11
+      - SENSOR_CHECK_INTERVAL=900
+      - SENSOR_DECIMAL_DIGITS=4
+      - MQTT_HOSTNAME=nas.home
+      - MQTT_PORT=1883
+      - MQTT_TIMEOUT=10
+      - MQTT_TOPIC=home/raspberrypi
+      - MQTT_CLIENT_ID=mqtt-raspberrypi
+      - CLIENT_CLEAN_SESSION=False
+      - CLIENT_TLS_INSECURE=False
+      - MQTT_CLIENT_QOS=4
+      - MQTT_USERNAME=${MQTT_USERNAME}
+      - MQTT_PASSWORD=${MQTT_PASSWORD}
+      - LOG_LEVEL=info
+
+  motioneye:
+    image: ccrisan/motioneye:master-armhf
+    container_name: motioneye
+    hostname: motioneye
+    restart: always
+    ports:
+      - "8081:8081"
+      - "8765:8765"
+    environment:
+      - TZ=Europe/Brussels
+      - PUID=0
+      - PGID=0
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./motioneye/config:/etc/motioneye
+      - ./motioneye/pictures:/var/lib/motioneye/Camera1
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
+      - /dev/video0:/dev/video0
+
