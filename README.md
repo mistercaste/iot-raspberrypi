@@ -16,3 +16,20 @@ Once complete, please remember to setup a password for MotionEye on port `:8765`
   - An MQTT broker configured
   - Initial setup: ([zigbee2mqtt - docker](https://www.zigbee2mqtt.io/guide/installation/02_docker.html))
   - Optional frontend setup on port 8080: ([zigbee2mqtt - frontend](https://www.zigbee2mqtt.io/guide/configuration/frontend.html))
+
+## Sample zigbee2mqtt configuration.yml
+Please notice that this way the passwords are stored in clear text.
+```
+homeassistant: false
+permit_join: true
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://nas.home
+  user: ********
+  password: ********
+serial:
+  port: /dev/ttyACM0
+frontend:
+  port: 8080
+  auth_token: ********
+```
