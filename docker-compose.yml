@@ -21,28 +21,6 @@ services:
       - /dev/bus/usb:/dev/bus/usb
       - /dev/video0:/dev/video0
 
-  dht-to-mqtt:
-    image: mistercaste/dht-to-mqtt:1.0.1
-    container_name: dht-to-mqtt
-    network_mode: host
-    privileged: true
-    restart: always
-    environment:
-      - MQTT_HOSTNAME=nas.home
-      - MQTT_USERNAME=${MQTT_USERNAME}
-      - MQTT_PASSWORD=${MQTT_PASSWORD}
-
-  bmp085-to-mqtt:
-    image: mistercaste/bmp085-to-mqtt:1.0.1
-    container_name: bmp085-to-mqtt
-    network_mode: host
-    privileged: true
-    restart: always
-    environment:
-      - MQTT_HOSTNAME=nas.home
-      - MQTT_USERNAME=${MQTT_USERNAME}
-      - MQTT_PASSWORD=${MQTT_PASSWORD}
-
   zigbee2mqtt:
     container_name: zigbee2mqtt
     image: koenkk/zigbee2mqtt:1.35.3
