@@ -1,29 +1,6 @@
 version: '3.7'
 services:
 
-  mqtt-sensors:
-    image: mistercaste/mqtt-sensors-dockerized:1.0.2
-    container_name: mqtt-dockerized
-    network_mode: host
-    privileged: true
-    restart: always
-    environment:
-      - SENSOR_PIN=14
-      - SENSOR_TYPE=dht11
-      - SENSOR_CHECK_INTERVAL=900
-      - SENSOR_DECIMAL_DIGITS=4
-      - MQTT_HOSTNAME=nas.home
-      - MQTT_PORT=1883
-      - MQTT_TIMEOUT=10
-      - MQTT_TOPIC=home/raspberrypi
-      - MQTT_CLIENT_ID=mqtt-raspberrypi
-      - CLIENT_CLEAN_SESSION=False
-      - CLIENT_TLS_INSECURE=False
-      - MQTT_CLIENT_QOS=4
-      - MQTT_USERNAME=${MQTT_USERNAME}
-      - MQTT_PASSWORD=${MQTT_PASSWORD}
-      - LOG_LEVEL=info
-
   motioneye:
     image: ccrisan/motioneye:master-armhf
     container_name: motioneye
@@ -45,7 +22,7 @@ services:
       - /dev/video0:/dev/video0
 
   dht-to-mqtt:
-    image: mistercaste/dht-to-mqtt:1.0.0
+    image: mistercaste/dht-to-mqtt:1.0.1
     container_name: dht-to-mqtt
     network_mode: host
     privileged: true
@@ -56,7 +33,7 @@ services:
       - MQTT_PASSWORD=${MQTT_PASSWORD}
 
   bmp085-to-mqtt:
-    image: mistercaste/bmp085-to-mqtt:1.0.0
+    image: mistercaste/bmp085-to-mqtt:1.0.1
     container_name: bmp085-to-mqtt
     network_mode: host
     privileged: true
@@ -65,3 +42,18 @@ services:
       - MQTT_HOSTNAME=nas.home
       - MQTT_USERNAME=${MQTT_USERNAME}
       - MQTT_PASSWORD=${MQTT_PASSWORD}
+
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    image: koenkk/zigbee2mqtt:1.35.3
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+      - /run/udev:/run/udev:ro
+    ports:
+      - 8080:8080
+    environment:
+      - TZ=Europe/Brussels
+    devices:
+      # Make sure this matched your adapter location
+      - /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_4037dbdef88bed11a1687d7937e930e3-if00-port0:/dev/ttyACM0
