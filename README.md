@@ -7,6 +7,8 @@ Once complete, please remember to setup a password for MotionEye on port `:8765`
 
 ## Pre-requisites
 - Raspberry PI
+  - ZigBee Dongle (e.g. Sonoff)
+  - USB Camera (e.g. Logitech)
 - Optional static IP address. Setup: `nmtui`
 - Docker Engine: `curl -sSL https://get.docker.com/ | sh` (Ref. [Install Docker Engine on Debian](https://docs.docker.com/engine/install/debian/))
 - USB camera: setup [docker-compose.yml](https://github.com/mistercaste/iot-raspberrypi/blob/main/docker-compose.yml) by verifying values with `v4l2-ctl --list-devices`
