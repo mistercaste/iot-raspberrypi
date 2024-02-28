@@ -5,10 +5,10 @@ Docker compose to bring up my Home Automation Raspberry PI (MQTT sensors, USB ca
 Once complete, please remember to setup a password for MotionEye on port `:8765` (initial authentication is just `admin`, without password)
 
 ## Pre-requisites
-- Raspberry PI (tested on ARM64)
-- A static IP address (optional, strongly suggested). Configure it with `nmtui`
-- Docker Engine: `curl -sSL https://get.docker.com/ | sh` ([Install Docker Engine on Debian](https://docs.docker.com/engine/install/debian/))
-- USB camera (check parameters in [docker-compose.yml](https://github.com/mistercaste/iot-raspberrypi/blob/main/docker-compose.yml) by typing in your command line `v4l2-ctl --list-devices`)
+- Raspberry PI
+- Optional static IP address. Setup: `nmtui`
+- Docker Engine: `curl -sSL https://get.docker.com/ | sh` (Ref. [Install Docker Engine on Debian](https://docs.docker.com/engine/install/debian/))
+- USB camera: setup [docker-compose.yml](https://github.com/mistercaste/iot-raspberrypi/blob/main/docker-compose.yml) by verifying values with `v4l2-ctl --list-devices`
 - Setup zigbee2mqtt
--- Initial configuration of zigbee2mqtt setup ([zigbee2mqtt - docker](https://www.zigbee2mqtt.io/guide/installation/02_docker.html))
--- Setup frontend on port 8080 ([zigbee2mqtt - frontend](https://www.zigbee2mqtt.io/guide/configuration/frontend.html))
+-- Initial setup: ([zigbee2mqtt - docker](https://www.zigbee2mqtt.io/guide/installation/02_docker.html))
+-- Frontend setup on port 8080: ([zigbee2mqtt - frontend](https://www.zigbee2mqtt.io/guide/configuration/frontend.html))
