@@ -19,6 +19,7 @@ Once complete, please remember to setup a password for MotionEye on port `:8765`
 
 ## Sample zigbee2mqtt configuration.yml
 Please notice that this way the passwords are stored in clear text.
+WARNING - Set `permit_join: false` once the hardware setup is complete!
 ```
 homeassistant: false
 permit_join: true
