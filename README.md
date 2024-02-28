@@ -1,5 +1,6 @@
 # iot-raspberrypi
-Docker compose to bring up my Home Automation Raspberry PI (MQTT sensors, USB camera, etc...). A very personal project in fact ;-) 
+Docker compose to bring up a Raspberry PI for Home Automation.
+In fact this is a very personal project :-) 
 
 ## WARNING
 Once complete, please remember to setup a password for MotionEye on port `:8765` (initial authentication is just `admin`, without password)
