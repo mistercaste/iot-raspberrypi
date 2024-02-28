@@ -10,6 +10,6 @@ Once complete, please remember to setup a password for MotionEye on port `:8765`
 - Docker Engine: `curl -sSL https://get.docker.com/ | sh` (Ref. [Install Docker Engine on Debian](https://docs.docker.com/engine/install/debian/))
 - USB camera: setup [docker-compose.yml](https://github.com/mistercaste/iot-raspberrypi/blob/main/docker-compose.yml) by verifying values with `v4l2-ctl --list-devices`
 - zigbee2mqtt
--- An MQTT broker configured
--- Initial setup: ([zigbee2mqtt - docker](https://www.zigbee2mqtt.io/guide/installation/02_docker.html))
--- Optional frontend setup on port 8080: ([zigbee2mqtt - frontend](https://www.zigbee2mqtt.io/guide/configuration/frontend.html))
+ - An MQTT broker configured
+ - Initial setup: ([zigbee2mqtt - docker](https://www.zigbee2mqtt.io/guide/installation/02_docker.html))
+ - Optional frontend setup on port 8080: ([zigbee2mqtt - frontend](https://www.zigbee2mqtt.io/guide/configuration/frontend.html))
